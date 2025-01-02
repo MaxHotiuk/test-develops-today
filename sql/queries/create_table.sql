@@ -5,7 +5,7 @@ CREATE TABLE TaxiTrips (
     TpepDropoffDateTime DATETIME NOT NULL,
     PassengerCount INT NOT NULL,
     TripDistance DECIMAL(10,2) NOT NULL,
-    StoreAndForwardFlag CHAR NOT NULL CHECK (StoreAndForwardFlag='N' OR StoreAndForwardFlag='Y'),
+    StoreAndForwardFlag VARCHAR(3) NOT NULL CHECK (StoreAndForwardFlag='No' OR StoreAndForwardFlag='Yes'),
     PULocationID INT NOT NULL,
     DOLocationID INT NOT NULL,
     FareAmount DECIMAL(10,2) NOT NULL,
