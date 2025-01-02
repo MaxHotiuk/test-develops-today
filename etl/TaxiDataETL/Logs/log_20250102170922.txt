@@ -1,0 +1,1 @@
+Processing complete. Total records inserted: 29889

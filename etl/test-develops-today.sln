@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaxiDataETL", "TaxiDataETL", "{8EBB5EF2-74E5-42B5-B7AA-D43E747C4136}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDataETL", "TaxiDataETL\TaxiDataETL.csproj", "{4DFB6158-C503-4A74-A0F8-65EDC9B084F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DFB6158-C503-4A74-A0F8-65EDC9B084F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DFB6158-C503-4A74-A0F8-65EDC9B084F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DFB6158-C503-4A74-A0F8-65EDC9B084F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DFB6158-C503-4A74-A0F8-65EDC9B084F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4DFB6158-C503-4A74-A0F8-65EDC9B084F0} = {8EBB5EF2-74E5-42B5-B7AA-D43E747C4136}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B30F142C-5B3B-4028-8281-A6F763DDC7BF}
+	EndGlobalSection
+EndGlobal
