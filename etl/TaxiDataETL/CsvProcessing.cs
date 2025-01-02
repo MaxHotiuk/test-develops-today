@@ -12,18 +12,20 @@ public class CsvProcessing
     {
         var duplicates = new HashSet<string>();
         var processedRecords = new HashSet<string>();
+        var logFile = Path.Combine("Logs", $"log_{DateTime.Now:yyyyMMddHHmmss}.txt");
         try
         {
-            await ProcessCsvFile(csvPath, duplicates, processedRecords, ConnectionString);
+            await ProcessCsvFile(csvPath, duplicates, processedRecords, ConnectionString, logFile);
             await WriteDuplicatesToFile(duplicates);
             Console.WriteLine($"Processing complete. Total records inserted: {processedRecords.Count}");
+            File.AppendAllText(logFile, $"Processing complete. Total records inserted: {processedRecords.Count}{Environment.NewLine}");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"An error occurred: {ex.Message}");
         }
     }
-    public static async Task ProcessCsvFile(string csvPath, HashSet<string> duplicates, HashSet<string> processedRecords, string ConnectionString)
+    public static async Task ProcessCsvFile(string csvPath, HashSet<string> duplicates, HashSet<string> processedRecords, string ConnectionString, string logFile)
     {
         int count = 0;
 
@@ -55,8 +57,8 @@ public class CsvProcessing
                     PassengerCount = int.TryParse(Helpers.RemoveWhitespaces(csv.GetField("passenger_count")), out var passengerCount) ? passengerCount : null,
                     TripDistance = decimal.TryParse(Helpers.RemoveWhitespaces(csv.GetField("trip_distance")), NumberStyles.Any, CultureInfo.InvariantCulture, out var tripDistance) ? tripDistance : null,
                     StoreAndForwardFlag = Helpers.ConvertFlag(Helpers.RemoveWhitespaces(csv.GetField("store_and_fwd_flag")?.Trim())),
-                    PULocationID = int.TryParse(Helpers.RemoveWhitespaces(csv.GetField("PULocationID")), out var puLocationId) ? puLocationId : null,
-                    DOLocationID = int.TryParse(Helpers.RemoveWhitespaces(csv.GetField("DOLocationID")), out var doLocationId) ? doLocationId : null,
+                    PULocationID = int.TryParse(Helpers.RemoveWhitespaces(csv.GetField("PULocationID")), out var puLocationId) ? puLocationId : throw new Exception("PULocationID cannot be null"),
+                    DOLocationID = int.TryParse(Helpers.RemoveWhitespaces(csv.GetField("DOLocationID")), out var doLocationId) ? doLocationId : throw new Exception("DOLocationID cannot be null"),
                     FareAmount = decimal.TryParse(Helpers.RemoveWhitespaces(csv.GetField("fare_amount")), NumberStyles.Any, CultureInfo.InvariantCulture, out var fareAmount) ? fareAmount : null,
                     TipAmount = decimal.TryParse(Helpers.RemoveWhitespaces(csv.GetField("tip_amount")), NumberStyles.Any, CultureInfo.InvariantCulture, out var tipAmount) ? tipAmount : null
                 };
@@ -82,6 +84,7 @@ public class CsvProcessing
             catch (Exception ex)
             {
                 Console.WriteLine($"Error processing record #{count} : '{ex.Message}'");
+                await File.AppendAllTextAsync(logFile, $"Error processing record #{count} : '{ex.Message}'{Environment.NewLine}");
             }
         }
 

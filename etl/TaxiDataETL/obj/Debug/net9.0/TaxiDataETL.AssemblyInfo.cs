@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaxiDataETL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+546323ac17a260cee876bc7f242af14978228b08")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f85161ad627bbb43f09c16f3b070fc743fbabd07")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaxiDataETL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaxiDataETL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
